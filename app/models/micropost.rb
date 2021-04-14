@@ -1,8 +1,8 @@
 class Micropost < ApplicationRecord
   belongs_to :user
   
-  has_many :reverses_of_favorite, class_name: 'Favorite', foreign_key: 'micropost_id'
-  has_many :likers, through: :reverses_of_favorite, source: :user
+  has_many :favorite
+  has_many :likers, through: :favorite, source: :user
   
   validates :content, presence: true, length: { maximum: 255 }
 end
